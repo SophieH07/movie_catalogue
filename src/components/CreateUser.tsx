@@ -5,13 +5,7 @@ const CreateUser = ({ setUser }: { setUser: Function }) => {
   const [username, setUserName] = useState("");
 
   function createUser(username: string) {
-    const user: User = {
-      username: username,
-      movies: [],
-    };
-    const userJson = JSON.stringify(user);
-
-    localStorage.setItem("user", userJson);
+    localStorage.setItem("user", username);
     setUser(username);
   }
 

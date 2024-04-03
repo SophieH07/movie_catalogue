@@ -9,10 +9,9 @@ function App() {
   const [user, setUser] = useState("");
 
   useEffect(() => {
-    const userJson = localStorage.getItem("user");
-    if (userJson !== null) {
-      const user = JSON.parse(userJson);
-      setUser(user.username);
+    const username = localStorage.getItem("user");
+    if (username !== null) {
+      setUser(username);
     }
   }, [user]);
 

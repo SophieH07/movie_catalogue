@@ -1,19 +1,23 @@
+import { useEffect, useState } from "react";
+import CreateMovie from "../components/CreateMovie";
+
 const NewMovie = () => {
-  function onSubmit() {
-    console.log("added");
-  }
+  const [movies, setMovies] = useState<Movie[]>([]);
+
+  useEffect(() => {
+    const storedMovies = localStorage.getItem("movies");
+    if (storedMovies) {
+      setMovies(JSON.parse(storedMovies));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("movies", JSON.stringify(movies));
+  }, [movies]);
 
   return (
     <div>
-      <form action="submit">
-        <label htmlFor="movie_name">Movie name: </label>
-        <input id="movie_name" type="text" placeholder="movie name" />
-        <label htmlFor="length">Length: </label>
-        <input id="length" type="text" placeholder="length" />
-        <label htmlFor="movie_name">Movie name: </label>
-        <input id="movie_name" type="text" placeholder="movie name" />
-        <button onClick={onSubmit}>Add</button>
-      </form>
+      <CreateMovie setMovies={setMovies} />
     </div>
   );
 };

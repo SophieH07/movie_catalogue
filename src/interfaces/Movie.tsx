@@ -3,6 +3,7 @@ interface Movie {
   rating: number;
   status: Status;
   length: number;
+  storage: M_Storage;
 }
 
 enum Status {
@@ -10,4 +11,10 @@ enum Status {
   NOT_WATCHED,
   HATED,
   LIKED,
+}
+
+enum M_Storage {
+  pendrive,
+  dvd,
+  computer,
 }
